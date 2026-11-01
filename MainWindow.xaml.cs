@@ -107,7 +107,7 @@ public partial class MainWindow : Window
             new[] { info.Year, info.Genre, info.Bitrate,
                     System.IO.Path.GetExtension(track.Path).TrimStart('.').ToUpperInvariant() }
                 .Where(s => !string.IsNullOrWhiteSpace(s)));
-        Title = $"{title} - MegaMusic";
+        Title = $"MegaMusic - {title}";
     }
 
     private void PlayPause_Click(object sender, RoutedEventArgs e) => TogglePlay();
@@ -168,6 +168,7 @@ public partial class MainWindow : Window
             SeekSlider.IsEnabled = false;
             SeekSlider.Value = 0;
             TitleText.Text = "Drop tracks here";
+            Title = "MegaMusic";
             ArtistText.Text = AlbumText.Text = DetailText.Text = "";
             PosText.Text = DurText.Text = "0:00";
         }
@@ -180,8 +181,11 @@ public partial class MainWindow : Window
         PlayButton.Content = playing ? "Pause" : "Play";
     }
 
-    private void Volume_Changed(object sender, RoutedPropertyChangedEventArgs<double> e) =>
+    private void Volume_Changed(object sender, RoutedPropertyChangedEventArgs<double> e)
+    {
         _player.Volume = e.NewValue;
+        if (VolumeText != null) VolumeText.Text = $"{Math.Round(e.NewValue * 100)}%";
+    }
 
     private void Seek_Down(object sender, MouseButtonEventArgs e) => _dragging = true;
 

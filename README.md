@@ -35,12 +35,12 @@ Supported extensions: `.mp3 .wav .wma .m4a .aac .flac .mp4 .ogg`. Actual playbac
 
 ## Install
 
-Download `MegaMusic-0.1.0-win-x64.zip` and `SHA256SUMS.txt` from the Releases page, then verify and unzip:
+Download `MegaMusic-0.1.1-win-x64.zip` and `SHA256SUMS.txt` from the Releases page, then verify and unzip:
 
 ```powershell
-(Get-FileHash .\MegaMusic-0.1.0-win-x64.zip -Algorithm SHA256).Hash.ToLower()
+(Get-FileHash .\MegaMusic-0.1.1-win-x64.zip -Algorithm SHA256).Hash.ToLower()
 # compare with the hash in SHA256SUMS.txt
-Expand-Archive .\MegaMusic-0.1.0-win-x64.zip -DestinationPath MegaMusic
+Expand-Archive .\MegaMusic-0.1.1-win-x64.zip -DestinationPath MegaMusic
 .\MegaMusic\MegaMusic.exe
 ```
 
