@@ -141,7 +141,20 @@ public partial class MainWindow : Window
     private void Window_KeyDown(object sender, KeyEventArgs e)
     {
         if (e.Key == Key.Space) { TogglePlay(); e.Handled = true; }
-        else if (e.Key == Key.Delete && TrackList.SelectedItem is Track t) { RemoveTrack(t); e.Handled = true; }
+        else if (e.Key == Key.Delete && Keyboard.Modifiers == ModifierKeys.Control) { ClearQueue(); e.Handled = true; }
+        else if (e.Key == Key.Delete && TrackList.SelectedItems.Count > 0)
+        {
+            foreach (var t in TrackList.SelectedItems.Cast<Track>().ToList()) RemoveTrack(t);
+            e.Handled = true;
+        }
+    }
+
+    private void Clear_Click(object sender, RoutedEventArgs e) => ClearQueue();
+
+    private void ClearQueue()
+    {
+        if (_current != null) RemoveTrack(_current);
+        _tracks.Clear();
     }
 
     private void RemoveTrack(Track t)

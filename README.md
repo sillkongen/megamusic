@@ -25,12 +25,26 @@ Supported extensions: `.mp3 .wav .wma .m4a .aac .flac .mp4 .ogg`. Actual playbac
 | Play / pause | Play button or `Space` |
 | Previous / next | ⏮ / ⏭ buttons (previous restarts the track if more than 3 s in) |
 | Seek | Drag the progress bar |
-| Remove a track | Select it and press `Delete` |
+| Remove tracks | Select one or more (`Ctrl`/`Shift`+click) and press `Delete` |
+| Clear the queue (stops playback) | "Clear queue" button or `Ctrl+Delete` |
 
 ## Requirements
 
 - Windows
 - [.NET 10 SDK](https://dotnet.microsoft.com/download) (the project targets `net10.0-windows`)
+
+## Install
+
+Download `MegaMusic-0.1.0-win-x64.zip` and `SHA256SUMS.txt` from the Releases page, then verify and unzip:
+
+```powershell
+(Get-FileHash .\MegaMusic-0.1.0-win-x64.zip -Algorithm SHA256).Hash.ToLower()
+# compare with the hash in SHA256SUMS.txt
+Expand-Archive .\MegaMusic-0.1.0-win-x64.zip -DestinationPath MegaMusic
+.\MegaMusic\MegaMusic.exe
+```
+
+This build needs the [.NET 10 Desktop Runtime](https://dotnet.microsoft.com/download/dotnet/10.0). The exe is unsigned, so Windows SmartScreen may warn on first run.
 
 ## Build and run
 

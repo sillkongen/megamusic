@@ -46,7 +46,15 @@
             </StackPanel>
         </Grid>
 
-        <ListBox x:Name="TrackList" Grid.Row="3" Background="#262626" Foreground="White" BorderBrush="#333333"
-                 MouseDoubleClick="TrackList_DoubleClick" DisplayMemberPath="Display"/>
+        <Grid Grid.Row="3">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Button x:Name="ClearButton" Content="Clear queue (Ctrl+Del)" HorizontalAlignment="Right"
+                    Padding="8,2" Margin="0,0,0,4" Click="Clear_Click"/>
+            <ListBox x:Name="TrackList" Grid.Row="1" Background="#262626" Foreground="White" BorderBrush="#333333"
+                     SelectionMode="Extended" MouseDoubleClick="TrackList_DoubleClick" DisplayMemberPath="Display"/>
+        </Grid>
     </Grid>
 </Window>
